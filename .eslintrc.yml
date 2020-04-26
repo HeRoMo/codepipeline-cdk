@@ -26,6 +26,7 @@ rules:
   import/extensions: [error, ignorePackages, { "ts": "never", "js": "never" }]
   import/no-unresolved: error
   import/prefer-default-export: off
+  no-console: [error, { allow: [info, warn, error] }]
   no-new: off
   no-unused-vars: off
   no-useless-constructor: off
