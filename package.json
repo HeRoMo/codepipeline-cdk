@@ -8,6 +8,8 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
+    "eslint": "./node_modules/.bin/eslint . --ext .ts",
+    "clean": "rm -rf ./{bin,lib,test}/{**,}/{*.d.ts,*.js}",
     "cdk": "cdk"
   },
   "devDependencies": {
