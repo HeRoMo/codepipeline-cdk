@@ -31,6 +31,9 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "@aws-cdk/aws-codebuild": "^1.35.0",
+    "@aws-cdk/aws-codepipeline": "^1.35.0",
+    "@aws-cdk/aws-codepipeline-actions": "^1.35.0",
     "@aws-cdk/aws-ec2": "^1.35.0",
     "@aws-cdk/core": "1.35.0",
     "config": "^3.3.1",
