@@ -1,8 +1,9 @@
 import { ConfigDefinition } from '../lib/Config';
 
 const config: ConfigDefinition = {
-  projectName: 'CodePipline-lesson',
+  projectName: 'CodePiplineLesson',
   aws: {
+    account: process.env.AWS_ACCOUNT || '',
     region: 'ap-northeast-1',
   },
 };

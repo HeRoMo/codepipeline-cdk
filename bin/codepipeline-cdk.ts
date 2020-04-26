@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from '@aws-cdk/core';
-import { CodepipelineCdkStack } from '../lib/codepipeline-cdk-stack';
+
+import { VpcStack } from '../lib/VpcStack';
 
 const app = new cdk.App();
-new CodepipelineCdkStack(app, 'CodepipelineCdkStack');
+new VpcStack(app, 'VpcStack');

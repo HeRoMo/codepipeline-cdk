@@ -6,6 +6,7 @@ export interface ConfigDefinition {
 }
 
 interface AwsConfig {
+  account: string;
   region: string;
 }
 
