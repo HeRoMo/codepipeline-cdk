@@ -1,7 +1,7 @@
 import * as config from 'config';
 
 export interface ConfigDefinition {
-  projectName: string;
+  appName: string;
   aws: AwsConfig;
 }
 
@@ -11,7 +11,7 @@ interface AwsConfig {
 }
 
 const CONFIG: ConfigDefinition = {
-  projectName: config.get<string>('projectName'),
+  appName: config.get<string>('projectName'),
   aws: config.get<AwsConfig>('aws'),
 };
 

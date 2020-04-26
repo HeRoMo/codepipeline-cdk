@@ -7,6 +7,6 @@ const env = { region, account };
 
 export class BaseStack extends Stack {
   constructor(scope: Construct, id: string) {
-    super(scope, id, { env, stackName: `${CONFIG.projectName}${id}` });
+    super(scope, id, { env, stackName: `${CONFIG.appName}${id}` });
   }
 }
