@@ -4,6 +4,7 @@ import * as cdk from '@aws-cdk/core';
 
 import { VpcStack } from '../lib/VpcStack';
 import { CodePipelineStack } from '../lib/CodePipelineStack';
+import { CodeBuildStack } from '../lib/CodeBuildStack';
 
 import { CONFIG } from '../lib/Config';
 
@@ -12,3 +13,4 @@ console.info(JSON.stringify({ CONFIG }, null, 2));
 const app = new cdk.App();
 const vpcStack = new VpcStack(app, 'VpcStack');
 new CodePipelineStack(app, 'CodePipelineStack', vpcStack.vpc);
+new CodeBuildStack(app, 'CodeBuildStack', vpcStack.vpc);
