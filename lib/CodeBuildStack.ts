@@ -11,6 +11,9 @@ import {
   GitHubSourceCredentials,
 } from '@aws-cdk/aws-codebuild';
 
+import { Rule, Schedule, RuleTargetInput } from '@aws-cdk/aws-events';
+import { CodeBuildProject } from '@aws-cdk/aws-events-targets';
+
 import { BaseStack } from './BaseStack';
 import { CONFIG } from './Config';
 
@@ -44,7 +47,7 @@ export class CodeBuildStack extends BaseStack {
     });
 
     // CodeBuild Action
-    new Project(this, 'StandaloneCodeBuild', {
+    const project = new Project(this, 'StandaloneCodeBuild', {
       projectName: `${appName}StandaloneCodeBuild`,
       description: `Standalone CodeBuild Project for ${appName}`,
       source: gitHubSource,
@@ -56,6 +59,22 @@ export class CodeBuildStack extends BaseStack {
       },
       subnetSelection: { subnetType: SubnetType.PRIVATE },
       vpc: this.vpc,
+    });
+
+    // add Scheduled Event Trigger
+    const codeBuildTarget = new CodeBuildProject(project, {
+      event: RuleTargetInput.fromObject({
+        environmentVariablesOverride: [
+          { name: 'ADDITIONAL_ENV_VARIABLE', value: 'from Event' },
+        ],
+      }),
+    });
+    new Rule(this, 'ScheduleRule', {
+      schedule: Schedule.cron({
+        hour: '15',
+        minute: '57',
+      }),
+      targets: [codeBuildTarget],
     });
   }
 }
