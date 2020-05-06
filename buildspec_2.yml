@@ -12,8 +12,8 @@ phases:
     commands:
       - echo Build started on `date`
       - env | sort | tee ${ARTIFACTS_DIR}/env_vars.txt
-      - ls -l
-      - ls -l ${CODEBUILD_SRC_DIR_buildAction1Output}
+      - ls -la
+      - ls -la ${CODEBUILD_SRC_DIR_buildAction1Output}
       - curl 'https://api.ipify.org?format=json' -o ${ARTIFACTS_DIR}/ip_address.json
       - cat ${ARTIFACTS_DIR}/ip_address.json
 artifacts:
