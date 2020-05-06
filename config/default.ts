@@ -12,7 +12,7 @@ const config: ConfigDefinition = {
   github: {
     owner: 'HeRoMo',
     repo: 'codepipeline-cdk',
-    branch: 'master',
+    branch: 'multi-artifacts',
   },
 };
 
