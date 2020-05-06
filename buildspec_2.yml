@@ -1,0 +1,20 @@
+version: 0.2
+
+env:
+  variables:
+    ARTIFACTS_DIR: artifacts
+
+phases:
+  pre_build:
+    commands:
+      - mkdir -p ${ARTIFACTS_DIR}
+  build:
+    commands:
+      - echo Build started on `date`
+      - env | sort | tee ${ARTIFACTS_DIR}/env_vars.txt
+      - curl 'https://api.ipify.org?format=json' -o ${ARTIFACTS_DIR}/ip_address.json
+artifacts:
+  name: buildActionArtifacts
+  files:
+    - '**/*'
+  base-directory: ${ARTIFACTS_DIR}
