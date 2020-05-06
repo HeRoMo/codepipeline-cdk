@@ -33,7 +33,7 @@ export class CodePipelineStack extends BaseStack {
     this.vpc = vpc;
 
     // Source Action
-    const sourceOutput = new Artifact();
+    const sourceOutput = new Artifact('sourceActionOutput');
     const sourceAction = new GitHubSourceAction({
       actionName: 'GitHubSource',
       owner,
@@ -45,7 +45,7 @@ export class CodePipelineStack extends BaseStack {
     });
 
     // CodeBuild Action
-    const buildArtifact = new Artifact();
+    const buildArtifact = new Artifact('buildActionOutput');
     const project = new PipelineProject(this, 'CodeBuild', {
       projectName: `${appName}CodeBuild`,
       description: `CodeBuild Project for ${appName}`,
@@ -72,7 +72,8 @@ export class CodePipelineStack extends BaseStack {
         {
           stageName: 'Source',
           actions: [sourceAction],
-        }, {
+        },
+        {
           stageName: 'Build',
           actions: [buildAction],
         },
