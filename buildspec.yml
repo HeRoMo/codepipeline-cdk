@@ -12,7 +12,9 @@ phases:
     commands:
       - echo Build started on `date`
       - env | sort | tee ${ARTIFACTS_DIR}/env_vars.txt
+      - ls -l
       - curl 'https://api.ipify.org?format=json' -o ${ARTIFACTS_DIR}/ip_address.json
+      - cat ${ARTIFACTS_DIR}/ip_address.json
 artifacts:
   name: buildActionArtifacts
   files:
